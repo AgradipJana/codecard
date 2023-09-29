@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+
+  <title>Codecard by Agradip</title>
+  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/92352889?s=400&u=330e9f72b410e41677e5fa5aaf76f7f9efcf423e&v=4" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Fira+Mono&amp;display=swap'>
+  
+<style>
+@property --scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+@property --translate-y {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+button {
+  /* property: --translate-y, --scale; */
+  transform: translateY(var(--translate-y)) scale(var(--scale));
+  transition: --scale 0.9s cubic-bezier(0.75, -0.5, 0, 1.75), --translate-y 0.3s ease;
+}
+button:hover {
+  --translate-y: -8%;
+  --scale: 1.2;
+}
+
+.fancy-button {
+  --fancy-button-gradient-0: #8D49FD;
+  --fancy-button-gradient-50: #7F56F3;
+  --fancy-button-gradient-100: #5691F3;
+  --fancy-button-inner-shadow-top: rgba(233, 209, 255, 0.2);
+  --fancy-button-inner-shadow-top-lg: rgba(9, 12, 60, 0.1);
+  --fancy-button-inner-shadow-bottom: rgba(137, 222, 246, 0.3);
+  --fancy-button-shine-top: #E9D1FF;
+  --fancy-button-shine-bottom: #ADFFF9;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 30px;
+  color: #fff;
+  background-image: linear-gradient(to bottom, var(--fancy-button-gradient-0) 0%, var(--fancy-button-gradient-50) 50%, var(--fancy-button-gradient-100) 100%);
+  box-shadow: 0px 4px 12px rgba(9, 12, 60, 0.15), 0px 2px 8px rgba(9, 12, 60, 0.15), 0px 1px 3px var(--fancy-button-inner-shadow-top-lg), inset 0px 1px 1px var(--fancy-button-inner-shadow-top), inset 0px -1px 3px var(--fancy-button-inner-shadow-bottom);
+}
+.fancy-button:before, .fancy-button:after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  will-change: transform;
+}
+.fancy-button:before {
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--fancy-button-shine-top);
+  width: 96px;
+  height: 6px;
+  top: -3px;
+  opacity: 0.6;
+  filter: blur(6px);
+  transition: opacity 0.25s;
+}
+.fancy-button:after {
+  inset: 0;
+  background-image: url("https://assets.codepen.io/165585/noise_1.png");
+  background-size: cover;
+  z-index: 2;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.fancy-button span {
+  display: block;
+  padding: 12px 32px;
+  border-radius: inherit;
+  overflow: hidden;
+  position: relative;
+  background-image: linear-gradient(to bottom, var(--fancy-button-shine-top), transparent 8px);
+  background-position: 0 -6px;
+  background-repeat: no-repeat;
+  transform: translateZ(0);
+  z-index: 1;
+}
+.fancy-button span:before, .fancy-button span:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: var(--fancy-button-shine-bottom);
+  transition: opacity 0.25s, transform 0.25s;
+  will-change: transform;
+}
+.fancy-button span:before {
+  width: 92px;
+  height: 8px;
+  bottom: -4px;
+  opacity: 0.75;
+  filter: blur(6px);
+}
+.fancy-button span:after {
+  width: 112px;
+  height: 1px;
+  bottom: 0;
+  opacity: 0.9;
+  filter: blur(1px);
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+pre {
+  background: rgba(220, 220, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(220, 220, 255, 0.1);
+  border-radius: 13px;
+  background-blend-mode: multiply;
+  padding: 16px 20px;
+}
+pre code {
+  font-family: "Fira Mono";
+  color: #a4d7f3;
+  line-height: 1.4;
+  font-size: 12px;
+}
+pre code .token {
+  color: white;
+}
+pre code .token.property {
+  color: #85E89D;
+}
+pre code .token.string {
+  color: #CB7DD0;
+}
+pre code .token.atrule {
+  color: #FFE67C;
+}
+pre code .token.selector {
+  color: #D4C9FF;
+}
+pre code .token.function {
+  color: #FFDBD0;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  font-family: "Inter", Arial;
+  justify-content: center;
+  align-items: center;
+  background-color: #0A0517;
+}
+body .twitter {
+  position: fixed;
+  display: block;
+  right: 12px;
+  bottom: 12px;
+}
+body .twitter svg {
+  width: 32px;
+  height: 32px;
+  fill: #fff;
+}
+</style>
+  
+  
+</head>
+
+<body translate="no">
+  <div class="content">
+  <pre><code class="language-css">@property --scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+@property --translate-y {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+button {
+  property: --translate-y, --scale;
+  transform: translateY(var(--translate-y)) scale(var(--scale));
+  transition: --scale .9s cubic-bezier(0.75, -0.5, 0, 1.75), --translate-y .3s ease;
+  &:hover {
+    --translate-y: -8%;
+    --scale: 1.2;
+  }
+}</code></pre>
+  <button class="fancy-button">
+    <span>Button</span>
+  </button>
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js'></script>
+  
+  
+</body>
+
+</html>
